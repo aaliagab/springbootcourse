@@ -1,0 +1,1 @@
+Configuraciones posibles de application.properties
