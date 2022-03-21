@@ -29,30 +29,14 @@
         </div>
       </div>
     </nav>
-    <div class = "container">
-      <div class="row justify-content-center">
-        <div th:each = "post : ${posts}" class="col-3">
-          <div class="card" style="width: 18rem;">
-            <img th:src="${post.urlImg}" src="../static/img/1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 th:text="${post.titulo}" class="card-title">Card title</h5>
-              <p th:text="${post.descripcion}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a th:href="@{/home/post?id=}+${post.id}" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </nav>
+    <!--DETALLES-->
+    <div class="card">
+      <h5 th:text = "${post.fecha}" class="card-header">Featured</h5>
+      <div class="card-body">
+        <h5 th:text = "${post.titulo}" class="card-title">Special title treatment</h5>
+        <p th:text = "${post.descripcion}" class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="/home/posts" class="btn btn-primary">Regresar</a>
       </div>
     </div>
 
