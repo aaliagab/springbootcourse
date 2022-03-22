@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Post {
 	private int id;
-	private String titulo, descripcion, urlImg;
-	private Date fecha;
+	private String titulo, descripcion, urlImg = "http://localhost/img/1.jpg";
+	private Date fecha = new Date();
 		
 	public Post() {
 		

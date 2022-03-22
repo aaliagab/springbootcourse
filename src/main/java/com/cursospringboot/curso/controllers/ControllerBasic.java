@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -71,6 +72,19 @@ public class ControllerBasic {
 		
 		mv.addObject("post", listaFiltrada.get(0));
 		return mv;
+	}
+	
+	@GetMapping(path = {"/post/new"})
+	public ModelAndView getForm() {
+		return new ModelAndView("form").addObject("post", new Post());
+	}
+	
+	@PostMapping(path = {"/post/add"})
+	public String addNewPost(Post post, Model model) {
+		List<Post> posts = posts();
+		posts.add(post);
+		model.addAttribute("posts",posts);
+		return "index";
 	}
 	
 	
