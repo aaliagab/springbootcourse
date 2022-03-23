@@ -1,5 +1,7 @@
 package com.cursospringboot.curso;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -27,16 +29,15 @@ public class SpringbootcourseApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		/*postComponent.posts().forEach(p->{
-			System.out.println(p.getTitulo());
-		});*/
+		Log log = LogFactory.getLog(getClass());
 		try {
 			postServices.validation(postComponent.posts()).forEach(
 					p->{
-						System.out.println(p.getTitulo());
+						log.info(p.getTitulo());
 					});
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
+			
 		}
 		
 	}
