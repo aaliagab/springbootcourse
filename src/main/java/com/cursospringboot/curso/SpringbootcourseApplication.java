@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.cursospringboot.curso.componets.PostComponent;
+import com.cursospringboot.curso.services.PostServices;
 
 @SpringBootApplication
 public class SpringbootcourseApplication implements CommandLineRunner{
@@ -15,6 +16,10 @@ public class SpringbootcourseApplication implements CommandLineRunner{
 	@Qualifier("com.cursospringboot.curso.componets.PostComponent")
 	public PostComponent postComponent;
 	
+	@Autowired
+	@Qualifier("Post Services ImplDos")
+	public PostServices postServices;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootcourseApplication.class, args);
 	}
@@ -22,9 +27,10 @@ public class SpringbootcourseApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		postComponent.posts().forEach(p->{
+		/*postComponent.posts().forEach(p->{
 			System.out.println(p.getTitulo());
-		});
+		});*/
+		postServices.validationTitulo(postComponent.posts());
 	}
 
 }
