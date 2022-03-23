@@ -17,7 +17,7 @@ public class SpringbootcourseApplication implements CommandLineRunner{
 	public PostComponent postComponent;
 	
 	@Autowired
-	@Qualifier("Post Services ImplDos")
+	@Qualifier("PostServices Decorado")
 	public PostServices postServices;
 	
 	public static void main(String[] args) {
@@ -30,7 +30,15 @@ public class SpringbootcourseApplication implements CommandLineRunner{
 		/*postComponent.posts().forEach(p->{
 			System.out.println(p.getTitulo());
 		});*/
-		postServices.validationTitulo(postComponent.posts());
+		try {
+			postServices.validation(postComponent.posts()).forEach(
+					p->{
+						System.out.println(p.getTitulo());
+					});
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
 
 }
